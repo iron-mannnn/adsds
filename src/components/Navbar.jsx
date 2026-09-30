@@ -1,181 +1,12 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-
 const Hero = () => {
-  const heroRef = useRef(null);
-
-  const roleRef = useRef(null);
-  const nameRef = useRef(null);
-  const imageRef = useRef(null);
-  const leftRef = useRef(null);
-  const starRef = useRef(null);
-  const rightRef = useRef(null);
-  const locationRef = useRef(null);
-  const scrollRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Initial states
-      gsap.set(roleRef.current, {
-        opacity: 0,
-        y: 20,
-      });
-
-      gsap.set(nameRef.current, {
-        opacity: 0,
-        y: 60,
-      });
-
-      gsap.set(imageRef.current, {
-        opacity: 0,
-        y: 100,
-      });
-
-      gsap.set(leftRef.current, {
-        opacity: 0,
-        x: -50,
-      });
-
-      gsap.set(starRef.current, {
-        opacity: 0,
-        scale: 0,
-        rotation: -90,
-      });
-
-      gsap.set(rightRef.current, {
-        opacity: 0,
-        x: 50,
-      });
-
-      gsap.set(locationRef.current, {
-        opacity: 0,
-        y: 20,
-      });
-
-      gsap.set(scrollRef.current, {
-        opacity: 0,
-        y: 20,
-      });
-
-      // Main animation
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "power3.out",
-        },
-      });
-
-      tl.to(roleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-      })
-
-        .to(
-          nameRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power4.out",
-          },
-          "-=0.3"
-        )
-
-        .to(
-          imageRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          "-=0.6"
-        )
-
-        .to(
-          leftRef.current,
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.8,
-          },
-          "-=0.7"
-        )
-
-        .to(
-          starRef.current,
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.7,
-            ease: "back.out(2)",
-          },
-          "-=0.5"
-        )
-
-        .to(
-          rightRef.current,
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.8,
-          },
-          "-=0.6"
-        )
-
-        .to(
-          locationRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          "-=0.4"
-        )
-
-        .to(
-          scrollRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          "-=0.4"
-        );
-
-      // Continuous star animation
-      gsap.to(starRef.current, {
-        rotation: 10,
-        scale: 1.08,
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={heroRef}
-      className="h-screen w-auto font-anton flex justify-center select-none"
-    >
+    <section className="h-screen w-auto font-anton flex justify-center select-none">
       {/* Name Starts */}
       <div className="absolute top-[20%] mx-5 text-center xl:top-[19%]">
-        <div
-          ref={roleRef}
-          className="font-inter text-[0.60rem] tracking-[0.40rem] mb-1 sm:text-[0.70rem] md:text-[0.72rem] lg:text-[0.78rem] xl:text-[0.78rem] md:mb-0 sm:tracking-[0.50rem] md:tracking-[0.60rem] lg:tracking-[0.65rem] xl:tracking-[0.70rem]"
-        >
+        <div className="font-inter text-[0.60rem] tracking-[0.40rem] mb-1 sm:text-[0.70rem] md:text-[0.72rem] lg:text-[0.78rem] xl:text-[0.78rem] md:mb-0 sm:tracking-[0.50rem] md:tracking-[0.60rem] lg:tracking-[0.65rem] xl:tracking-[0.70rem]">
           FULL STACK DEVELOPER
         </div>
-
-        <div
-          ref={nameRef}
-          className="text-[7rem] leading-28 tracking-tight sm:leading-none sm:text-[14rem] md:text-[18rem] lg:text-[22rem] xl:text-[29rem]"
-        >
+        <div className="text-[7rem] leading-28 tracking-tight sm:leading-none sm:text-[14rem] md:text-[18rem] lg:text-[22rem] xl:text-[29rem]">
           <div>NAZISH</div>
           <div className="sm:hidden">PARVEZ</div>
         </div>
@@ -184,52 +15,37 @@ const Hero = () => {
 
       {/* Main Image Starts */}
       <img
-        ref={imageRef}
         src="/final.png"
         alt="Nazish Parvez"
         width={1080}
         height={1080}
+        priority
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto h-[50%] object-cover sm:h-[60%] md:h-[65%] lg:h-[68%] xl:h-[70%]"
       />
       {/* Main Image Ends */}
 
       {/* Left Side FE BE & Everything Starts */}
-      <div
-        ref={leftRef}
-        className="absolute bottom-[25%] left-[5%] font-anton text-white text-left text-lg leading-5 lg:text-xl xl:text-2xl xl:leading-6 xl:bottom-[32%] md:bottom-[20%] lg:bottom-[16%] lg:left-[4%]"
-      >
-        FRONTEND <br />
-        BACKEND <br />
+      <div className="absolute bottom-[25%] left-[5%] font-anton text-white text-left text-lg leading-5 lg:text-xl xl:text-2xl xl:leading-6 md:bottom-[20%] lg:bottom-[16%] lg:left-[4%] xl:bottom-[32%]">
+        FRONTEND <br /> BACKEND <br />{" "}
         <span className="text-orange">EVERYTHING</span>
       </div>
       {/* Left Side FE BE & Everything Ends */}
 
       {/* Star Starts */}
-      <div
-        ref={starRef}
-        className="absolute top-[11%] left-[5%] font-anton text-orange text-6xl sm:top-[12.5%] lg:left-[4%] xl:top-[14%] md:text-7xl xl:text-[5.8rem]"
-      >
+      <div className="absolute top-[11%] left-[5%] font-anton text-orange text-6xl sm:top-[12.5%] lg:left-[4%] xl:top-[14%] md:text-7xl xl:text-[5.8rem]">
         *
       </div>
       {/* Star Ends */}
 
       {/* Right Side OTW Starts */}
-      <div
-        ref={rightRef}
-        className="absolute top-[10%] right-[5%] font-anton text-white leading-5 text-right text-lg lg:text-xl xl:text-2xl xl:leading-6 sm:top-[12%] lg:right-[4%] lg:top-[14%] xl:top-[34%]"
-      >
-        OPEN <br />
-        TO <br />
-        <span className="text-orange">WORK</span>
+      <div className="absolute top-[10%] right-[5%] font-anton text-white leading-5 text-right text-lg lg:text-xl xl:text-2xl xl:leading-6 sm:top-[12%] lg:right-[4%] lg:top-[14%] xl:top-[34%]">
+        OPEN <br /> TO <br /> <span className="text-orange">WORK</span>
       </div>
       {/* Right Side OTW Ends */}
 
       {/* Left Side Bottom Location Starts */}
-      <div
-        ref={locationRef}
-        className="absolute z-10 bottom-[2%] left-[5%] font-inter text-white text-[0.55rem] lg:text-[0.7rem] lg:left-[4%]"
-      >
-        Based in <br />
+      <div className="absolute z-10 bottom-[2%] left-[5%] font-inter text-white text-[0.55rem] lg:text-[0.7rem] lg:left-[4%]">
+        Based in <br />{" "}
         <span className="underline md:decoration-2 md:decoration-orange">
           Hyderabad
         </span>
@@ -238,10 +54,7 @@ const Hero = () => {
       {/* Left Side Bottom Location Ends */}
 
       {/* Right Side Scroll Starts */}
-      <div
-        ref={scrollRef}
-        className="absolute z-10 bottom-[2%] right-[4%] font-inter text-white text-right text-[0.55rem] lg:text-[0.7rem] lg:right-[4%]"
-      >
+      <div className="absolute z-10 bottom-[2%] right-[4%] font-inter text-white text-right text-[0.55rem] lg:text-[0.7rem] lg:right-[4%]">
         <span className="underline md:decoration-orange md:decoration-2">
           SCROLL
         </span>
